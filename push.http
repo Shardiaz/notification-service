@@ -1,0 +1,54 @@
+### system warning
+POST https://localhost:5001/api/notification HTTP/1.1
+content-type: application/json
+
+{
+    "message": "Auf grund von Wartungsarbeiten am Server wird die Anwendung am 27.6 ab 18 Uhr (MESZ) für ca. 2 Stunden nicht verfügbar sein.",
+    "label": "Wartung",
+    "type":"warning",
+    "origin":"system"
+}
+
+### system info
+POST https://localhost:5001/api/notification HTTP/1.1
+content-type: application/json
+
+{
+    "message": "Die updates für das Helpcenter sind abgeschlossen, aktualisiere den Browsertab um das neue Modul zu nutzen.",
+    "label": "Helpcenter 1.0",
+    "type":"info",
+    "origin":"system"
+}
+
+### processing started
+POST https://localhost:5001/api/notification HTTP/1.1
+content-type: application/json
+
+{
+    "message": "Es werden 123 Datensätze verarbeitet.",
+    "label": "Gestartet: Sollstellung",
+    "type": "positive",
+    "origin": "processing"
+}
+
+### processing finished
+POST https://localhost:5001/api/notification HTTP/1.1
+content-type: application/json
+
+{
+    "message": "Es wurden 123 Dateien verarbeitet.",
+    "label": "Erfolgreich beendet: Sollstellung",
+    "type": "positive",
+    "origin": "processing"
+}
+
+###  porcessing finished warning
+POST https://localhost:5001/api/notification HTTP/1.1
+content-type: application/json
+
+{
+    "message": "Es wurden 118 Dateien verarbeitet.\r\n 5 Warnungen sind aufgetreten.",
+    "label": "Mit 5 Warnungen beendet: Sollstellung",
+    "type": "warning",
+    "origin": "processing"
+}
