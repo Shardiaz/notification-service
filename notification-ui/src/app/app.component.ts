@@ -54,6 +54,6 @@ export class AppComponent {
       date: new Date(this.date).getTime(),
     };
 
-    this.http.post('https://localhost:5001/api/notification', body).subscribe();
+    this.http.post('https://notificationserviceapi.azurewebsites.net/api/notification', body).subscribe();
   }
 }
