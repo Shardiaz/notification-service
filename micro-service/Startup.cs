@@ -22,7 +22,6 @@ namespace signal_r_api
             services.AddControllers();
             services.AddSignalR();
             services.AddCors();
-
             services.AddSwaggerGen();
         }
 
@@ -38,13 +37,12 @@ namespace signal_r_api
 
             app.UseSwagger();
 
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Notification API V1"));
 
             app.UseRouting();
 
             app.UseCors(builder =>
             {
-                //builder.WithOrigins("https://localhost:4200", "http://localhost:63662").SetIsOriginAllowedToAllowWildcardSubdomains().AllowAnyHeader().AllowAnyMethod().AllowCredentials();
                 builder.SetIsOriginAllowed((host) => true).AllowAnyMethod().AllowAnyHeader().AllowCredentials();
             });
 
