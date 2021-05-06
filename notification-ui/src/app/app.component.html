@@ -1,0 +1,76 @@
+<div class="header">
+  <h1 class="title">Notification UI</h1>
+</div>
+
+<div class="content">
+  <div class="toggle type">
+    <button
+      [class.selected]="type === NotificationType.positive"
+      (click)="type = NotificationType.positive"
+    >
+      Positiv
+    </button>
+    <button
+      [class.selected]="type === NotificationType.warning"
+      (click)="type = NotificationType.warning"
+    >
+      Warnung
+    </button>
+    <button
+      [class.selected]="type === NotificationType.danger"
+      (click)="type = NotificationType.danger"
+    >
+      Gefahr
+    </button>
+    <button
+      [class.selected]="type === NotificationType.info"
+      (click)="type = NotificationType.info"
+    >
+      Info
+    </button>
+  </div>
+
+  <div class="toggle origin">
+    <button
+      [class.selected]="origin === PushOrigin.system"
+      (click)="origin = PushOrigin.system"
+    >
+      Yuneo
+    </button>
+    <button
+      [class.selected]="origin === PushOrigin.processing"
+      (click)="origin = PushOrigin.processing"
+    >
+      Verarbeitung
+    </button>
+    <button
+      [class.selected]="origin === PushOrigin.evaluation"
+      (click)="origin = PushOrigin.evaluation"
+    >
+      Auswertung
+    </button>
+    <button
+      [class.selected]="origin === PushOrigin.correspondence"
+      (click)="origin = PushOrigin.correspondence"
+    >
+      Schriftverkehr
+    </button>
+  </div>
+
+  <div class="label">
+    <input placeholder="Titel" [(ngModel)]="label" />
+  </div>
+
+  <div class="message">
+    <textarea placeholder="Nachricht" [(ngModel)]="message"></textarea>
+  </div>
+
+  <div class="date">
+    <input type="date" [(ngModel)]="date" />
+  </div>
+
+  <div class="actions">
+    <button (click)="reset()">Zurücksetzen</button>
+    <button class="primary" (click)="send()">Senden</button>
+  </div>
+</div>

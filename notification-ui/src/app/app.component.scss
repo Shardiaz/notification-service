@@ -1,0 +1,76 @@
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  place-items: center;
+  background: #9d71e8;
+  color: #f2f7ff;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  div {
+    margin-bottom: 1rem;
+  }
+}
+
+.toggle {
+  display: flex;
+  * {
+    flex-grow: 1;
+  }
+
+  .selected:not(:hover):not(:active) {
+    background-color: #5a189a;
+  }
+}
+
+.actions {
+  display: flex;
+  * {
+    flex-grow: 1;
+  }
+}
+
+input,
+textarea {
+  width: 100%;
+  border: none;
+  background: #76a5fd;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  box-shadow: 0 0 5px #b2c9ff;
+  font-size: 1rem;
+
+  &::placeholder {
+    color: #c9dcff;
+  }
+}
+
+button {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: inherit;
+  background: #be99ff;
+  border: none;
+  padding: 1rem;
+  &:hover:not(:active) {
+    background-color: #b2c9ff;
+    color: black;
+  }
+  &:active {
+    background: #7161ef;
+  }
+  &.primary:not(:hover):not(:active) {
+    background: #52b788;
+  }
+}
