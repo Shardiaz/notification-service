@@ -1,11 +1,11 @@
 {
-  "name": "notification-ui",
+  "name": "notification-service",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:prod": "ng build --prod --base-href /notification-ui/",
+    "build:prod": "ng build --prod --base-href /notification-service/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
