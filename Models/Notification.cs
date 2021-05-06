@@ -6,6 +6,6 @@ namespace signal_r_api.Models
         public string label { get; set; }
         public string type { get; set; }
         public string origin { get; set; }
-        public int date { get; set; }
+        public long date { get; set; }
     }
 }

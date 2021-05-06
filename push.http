@@ -17,7 +17,8 @@ content-type: application/json
     "message": "Die updates für das Helpcenter sind abgeschlossen, aktualisiere den Browsertab um das neue Modul zu nutzen.",
     "label": "Helpcenter 1.0",
     "type":"info",
-    "origin":"system"
+    "origin":"system",
+    "date":1620691200000
 }
 
 ### processing started
