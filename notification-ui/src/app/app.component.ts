@@ -33,7 +33,7 @@ export class AppComponent {
 
   public message: string = '';
 
-  public date: string = new Date().toDateString();
+  public date: Date = new Date();
 
   constructor(private http: HttpClient) {}
 
@@ -42,7 +42,7 @@ export class AppComponent {
     this.origin = PushOrigin.system;
     this.label = '';
     this.message = '';
-    this.date = new Date().toDateString();
+    this.date = new Date();
   }
 
   public send() {
@@ -51,9 +51,33 @@ export class AppComponent {
       label: this.label,
       type: this.type,
       origin: this.origin,
-      date: new Date(this.date).getTime(),
+      date: this.date && this.date.getTime(),
     };
 
-    this.http.post('https://notificationserviceapi.azurewebsites.net/api/notification', body).subscribe();
+    this.http
+      .post(
+        'https://notificationserviceapi.azurewebsites.net/api/notification',
+        body
+      )
+      .subscribe();
+  }
+
+  public validateType() {
+    if (this.origin === PushOrigin.system) {
+      if (
+        this.type === NotificationType.info ||
+        this.type === NotificationType.warning
+      ) {
+        return;
+      }
+
+      this.type = NotificationType.info;
+    } else {
+      if (this.type !== NotificationType.info) {
+        return;
+      }
+
+      this.type = NotificationType.positive;
+    }
   }
 }

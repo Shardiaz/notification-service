@@ -1,76 +1,96 @@
-<div class="header">
-  <h1 class="title">Notification UI</h1>
-</div>
+<div class='light x1'></div>
+<div class='light x2'></div>
+<div class='light x3'></div>
+<div class='light x4'></div>
+<div class='light x5'></div>
+<div class='light x6'></div>
+<div class='light x7'></div>
+<div class='light x8'></div>
+<div class='light x9'></div>
 
-<div class="content">
-  <div class="toggle type">
-    <button
-      [class.selected]="type === NotificationType.positive"
-      (click)="type = NotificationType.positive"
-    >
-      Positiv
-    </button>
-    <button
-      [class.selected]="type === NotificationType.warning"
-      (click)="type = NotificationType.warning"
-    >
-      Warnung
-    </button>
-    <button
-      [class.selected]="type === NotificationType.danger"
-      (click)="type = NotificationType.danger"
-    >
-      Gefahr
-    </button>
-    <button
-      [class.selected]="type === NotificationType.info"
-      (click)="type = NotificationType.info"
-    >
-      Info
-    </button>
-  </div>
+<mat-toolbar color="primary" class="header">
+  <mat-toolbar-row> <h1 class="title">Notification UI</h1> </mat-toolbar-row>
+  <mat-toolbar-row>
+    <h2 class="title">Realtime data with Signal-R</h2>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-  <div class="toggle origin">
-    <button
-      [class.selected]="origin === PushOrigin.system"
-      (click)="origin = PushOrigin.system"
+<mat-card class="content" [attr.type]="type">
+  <mat-card-header class="content__header">
+    <mat-button-toggle-group
+      [(ngModel)]="origin"
+      (ngModelChange)="validateType()"
     >
-      Yuneo
-    </button>
-    <button
-      [class.selected]="origin === PushOrigin.processing"
-      (click)="origin = PushOrigin.processing"
-    >
-      Verarbeitung
-    </button>
-    <button
-      [class.selected]="origin === PushOrigin.evaluation"
-      (click)="origin = PushOrigin.evaluation"
-    >
-      Auswertung
-    </button>
-    <button
-      [class.selected]="origin === PushOrigin.correspondence"
-      (click)="origin = PushOrigin.correspondence"
-    >
-      Schriftverkehr
-    </button>
-  </div>
+      <mat-button-toggle [value]="PushOrigin.system"> Yuneo </mat-button-toggle>
+      <mat-button-toggle [value]="PushOrigin.processing">
+        Verarbeitung
+      </mat-button-toggle>
+      <mat-button-toggle [value]="PushOrigin.evaluation">
+        Auswertung
+      </mat-button-toggle>
+      <mat-button-toggle [value]="PushOrigin.correspondence">
+        Schriftverkehr
+      </mat-button-toggle>
+    </mat-button-toggle-group>
 
-  <div class="label">
-    <input placeholder="Titel" [(ngModel)]="label" />
-  </div>
+    <mat-button-toggle-group [(ngModel)]="type">
+      <mat-button-toggle
+        *ngIf="origin === PushOrigin.system"
+        [value]="NotificationType.info"
+      >
+        Info
+      </mat-button-toggle>
+      <mat-button-toggle
+        *ngIf="origin !== PushOrigin.system"
+        [value]="NotificationType.positive"
+      >
+        Positiv
+      </mat-button-toggle>
+      <mat-button-toggle [value]="NotificationType.warning">
+        Warnung
+      </mat-button-toggle>
+      <mat-button-toggle
+        *ngIf="origin !== PushOrigin.system"
+        [value]="NotificationType.danger"
+      >
+        Gefahr
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-card-header>
 
-  <div class="message">
-    <textarea placeholder="Nachricht" [(ngModel)]="message"></textarea>
-  </div>
+  <mat-card-content>
+    <form class="content__form">
+      <mat-form-field>
+        <input name="label" matInput placeholder="Titel" [(ngModel)]="label" />
+      </mat-form-field>
 
-  <div class="date">
-    <input type="date" [(ngModel)]="date" />
-  </div>
+      <mat-form-field>
+        <textarea
+          name="message"
+          matInput
+          placeholder="Nachricht"
+          [(ngModel)]="message"
+        ></textarea>
+      </mat-form-field>
 
-  <div class="actions">
-    <button (click)="reset()">Zurücksetzen</button>
-    <button class="primary" (click)="send()">Senden</button>
-  </div>
-</div>
+      <mat-form-field>
+        <input
+          name="date"
+          matInput
+          [(ngModel)]="date"
+          [matDatepicker]="picker"
+          placeholder="Refrenzzeitpunkt"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions class="actions">
+    <button mat-raised-button (click)="reset()">Zurücksetzen</button>
+    <button mat-raised-button color="primary" (click)="send()">Senden</button>
+  </mat-card-actions>
+</mat-card>
+
+
